@@ -2,7 +2,14 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
-export const LOGOUT = 'LOGOUT';
+export const LOAD_CURRENT_LOGIN_USER_REQUEST =
+  'LOAD_CURRENT_LOGIN_USER_REQUEST';
+export const LOAD_CURRENT_LOGIN_USER_SUCCESS =
+  'LOAD_CURRENT_LOGIN_USER_SUCCESS';
+export const LOAD_CURRENT_LOGIN_USER_FAILURE =
+  'LOAD_CURRENT_LOGIN_USER_FAILURE';
+
+export const LOGOUT = 'LOG_OUT';
 
 export interface AuthenticatedUser {
   _id: string;
@@ -38,6 +45,24 @@ interface Logout {
   type: typeof LOGOUT;
 }
 
+interface LoadCurrentLoginUserRequest {
+  type: typeof LOAD_CURRENT_LOGIN_USER_REQUEST;
+}
+
+interface LoadCurrentLoginUserSuccess {
+  type: typeof LOAD_CURRENT_LOGIN_USER_SUCCESS;
+  payload: {
+    user: AuthenticatedUser;
+  };
+}
+
+interface LoadCurrentLoginUserFailure {
+  type: typeof LOAD_CURRENT_LOGIN_USER_FAILURE;
+  payload: {
+    error: string;
+  };
+}
+
 export interface AccountState {
   user: AuthenticatedUser | null;
   loading: boolean;
@@ -49,4 +74,7 @@ export type AccountActionTypes =
   | LoginRequest
   | LoginSuccess
   | LoginFailure
-  | Logout;
+  | Logout
+  | LoadCurrentLoginUserRequest
+  | LoadCurrentLoginUserSuccess
+  | LoadCurrentLoginUserFailure;

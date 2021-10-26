@@ -4,7 +4,7 @@ import './App.css';
 import './styles/sb-admin-2.min.css';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import Login from './pages/account/Login';
-import Admin from './pages/admin/Admin';
+import { Admin } from './pages/admin/Admin';
 import { PrivateRoute, AccountRoute } from './components';
 function App() {
   let a = true;
@@ -12,10 +12,10 @@ function App() {
     <div className="App" id="wrapper">
       <BrowserRouter>
         <Switch>
-          <AccountRoute>
-            <Login/>
+          <AccountRoute path='/login'>
+            <Login />
           </AccountRoute>
-          <PrivateRoute>
+          <PrivateRoute path='/'>
             <Admin />
           </PrivateRoute>
         </Switch>
