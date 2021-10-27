@@ -30,6 +30,7 @@ interface LoadUsersPagingFailure {
 export interface UsersState {
   items: IUser[];
   page: number;
+  pageSize: number;
   total: number;
   loading: boolean;
   deletedCount: number;

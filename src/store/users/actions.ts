@@ -15,12 +15,12 @@ export const loadUsersPaging = (currentPage: number) => {
         type: LOAD_USERS_PAGING_REQUEST,
       });
 
-      // const res = await userService.getUsersPaging(currentPage);
+      const res = await userService.getUsersPaging(currentPage);
 
-      // dispatch({
-      //   type: LOAD_USERS_PAGING_SUCCESS,
-      //   payload: res,
-      // });
+      dispatch({
+        type: LOAD_USERS_PAGING_SUCCESS,
+        payload: res,
+      });
     } catch (error: any) {
       dispatch({
         type: LOAD_USERS_PAGING_FAILURE,

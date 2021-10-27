@@ -1,26 +1,37 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppState } from '../../../store';
 import { IUser } from '../../../store/users/types';
 import { loadUsersPaging } from '../../../store/users/actions';
+import { Pagination } from '../../../components';
 
 export const Users = () => {
-  // const users: IUser[] = useSelector((state: AppState) => state.users.items);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(loadUsersPaging(1));
-  // }, [dispatch]);
+  const users: IUser[] = useSelector((state: AppState) => state.users.items);
+  const totalItems = useSelector((state: AppState) => state.users.total);
+  const pageSize = useSelector((state: AppState) => state.users.pageSize);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // const userElements: JSX.Element[] = users.map((user) => {
-  //   return (
-  //     <tr key={`user_${user._id}`}>
-  //       <td>{user.first_name}</td>
-  //       <td>{user.last_name}</td>
-  //       <td>{user.email}</td>
-  //     </tr>
-  //   );
-  // });
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUsersPaging(currentPage));
+  }, [dispatch, currentPage]);
+
+  const onPageChanged = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    dispatch(loadUsersPaging(pageNumber));
+  };
+
+  const userElements: JSX.Element[] = users.map((user) => {
+    return (
+      <tr key={`user_${user._id}`}>
+        <td>{user.first_name}</td>
+        <td>{user.last_name}</td>
+        <td>{user.email}</td>
+      </tr>
+    );
+  });
 
   return (
     <Fragment>
@@ -49,9 +60,17 @@ export const Users = () => {
                     <th>Email</th>
                   </tr>
                 </thead>
-                {/* <tbody>{userElements}</tbody> */}
+                <tbody>{userElements}</tbody>
               </table>
             </div>
+          </div>
+          <div className='card-footer'>
+            <Pagination
+              totalRecords={totalItems}
+              pageLimit={5}
+              pageSize={pageSize}
+              onPageChanged={onPageChanged}
+            ></Pagination>
           </div>
         </div>
       </div>
