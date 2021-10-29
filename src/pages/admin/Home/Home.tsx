@@ -6,7 +6,6 @@ export const Home = () => {
       <div className='d-sm-flex align-items-center justify-content-between mb-4'>
         <h1 className='h3 mb-0 text-gray-800'>Dashboard</h1>
         <a
-          href='/#'
           className='d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'
         >
           <i className='fas fa-download fa-sm text-white-50' /> Generate Report
@@ -124,7 +123,7 @@ export const Home = () => {
               <div className='dropdown no-arrow'>
                 <a
                   className='dropdown-toggle'
-                  href='/#'
+
                   role='button'
                   id='dropdownMenuLink'
                   data-toggle='dropdown'
@@ -138,14 +137,14 @@ export const Home = () => {
                   aria-labelledby='dropdownMenuLink'
                 >
                   <div className='dropdown-header'>Dropdown Header:</div>
-                  <a className='dropdown-item' href='/#'>
+                  <a className='dropdown-item'>
                     Action
                   </a>
-                  <a className='dropdown-item' href='/#'>
+                  <a className='dropdown-item' >
                     Another action
                   </a>
                   <div className='dropdown-divider' />
-                  <a className='dropdown-item' href='/#'>
+                  <a className='dropdown-item'>
                     Something else here
                   </a>
                 </div>
@@ -170,7 +169,7 @@ export const Home = () => {
               <div className='dropdown no-arrow'>
                 <a
                   className='dropdown-toggle'
-                  href='/#'
+
                   role='button'
                   id='dropdownMenuLink'
                   data-toggle='dropdown'
@@ -184,14 +183,14 @@ export const Home = () => {
                   aria-labelledby='dropdownMenuLink'
                 >
                   <div className='dropdown-header'>Dropdown Header:</div>
-                  <a className='dropdown-item' href='/#'>
+                  <a className='dropdown-item'>
                     Action
                   </a>
-                  <a className='dropdown-item' href='/#'>
+                  <a className='dropdown-item'>
                     Another action
                   </a>
                   <div className='dropdown-divider' />
-                  <a className='dropdown-item' href='/#'>
+                  <a className='dropdown-item'>
                     Something else here
                   </a>
                 </div>

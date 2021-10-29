@@ -6,10 +6,14 @@ import { Home } from './Home/Home';
 import { TopBar } from './TopBar';
 import { Users } from './Users/Users';
 import { getCurrentLoginUser } from '../../store/account/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddUser } from './Users/AddUser';
+import { AppState } from '../../store';
+import { EditUser } from './Users/EditUser';
 
 export const Admin = () => {
   const dispatch = useDispatch();
+  const alert = useSelector((state: AppState) => state.alert);
   useEffect(() => {
     dispatch(getCurrentLoginUser());
   }, [dispatch]);
@@ -24,9 +28,18 @@ export const Admin = () => {
           <TopBar />
           {/* Begin Page Content */}
           <div className='container-fluid'>
+            {alert.message && (
+              <div className={`alert ${alert.type}`}>{alert.message}</div>
+            )}
             <Switch>
               <Route path='/users'>
                 <Users />
+              </Route>
+              <Route path='/user-add'>
+                <AddUser />
+              </Route>
+              <Route path='/user-edit/:id'>
+                <EditUser />
               </Route>
               <Route path='/'>
                 <Home />

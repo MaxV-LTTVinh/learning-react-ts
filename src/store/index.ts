@@ -1,10 +1,12 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { accountReducer } from './account/reducers';
-import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
+
+import { accountReducer } from './account/reducers';
 import { setAuthToken } from '../helpers';
+import storage from 'redux-persist/lib/storage';
+import thunkMiddleware from 'redux-thunk';
 import { usersReducer } from './users/reducers';
+import { alertReducer } from './alert/reducers';
 
 const persistConfig = {
   key: 'root',
@@ -12,10 +14,10 @@ const persistConfig = {
   whitelist: ['account'],
 };
 
-
 const rootReducer = combineReducers({
   account: accountReducer,
   users: usersReducer,
+  alert: alertReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -46,10 +48,11 @@ store.subscribe(() => {
   currentState = store.getState() as AppState;
   // if the token changes set the value in localStorage and axios headers
   if (previousState.account.token !== currentState.account.token) {
-    const { token } = currentState.account;
+    const token = currentState.account.token;
     if (token) {
       setAuthToken(token);
     }
   }
 });
+
 export { store, persistedStore };

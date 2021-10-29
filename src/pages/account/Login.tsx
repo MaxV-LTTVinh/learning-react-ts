@@ -31,8 +31,7 @@ export default function Login() {
     e.preventDefault();
     setSubmitted(true);
     if (email && password) {
-      const { from } = location.state || { from: { pathname: '/' } };
-      dispatch(login(email, password, from));
+      dispatch(login(email, password));
     }
   };
   return (

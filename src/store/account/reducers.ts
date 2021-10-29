@@ -1,10 +1,23 @@
-import { AccountState, AccountActionTypes, LOGIN_REQUEST, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, LOAD_CURRENT_LOGIN_USER_REQUEST, LOAD_CURRENT_LOGIN_USER_SUCCESS, LOAD_CURRENT_LOGIN_USER_FAILURE } from './types';
+import {
+  AccountState,
+  AccountActionTypes,
+  LOGIN_REQUEST,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  LOAD_CURRENT_LOGIN_USER_REQUEST,
+  LOAD_CURRENT_LOGIN_USER_SUCCESS,
+  LOAD_CURRENT_LOGIN_USER_FAILURE
+} from './types';
+
 const initialState: AccountState = {
   user: null,
   loading: false,
   error: null,
   token: null,
+  refreshToken: null,
 }
+
 const accountReducer = (
   state: AccountState = initialState,
   action: AccountActionTypes,

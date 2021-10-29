@@ -42,7 +42,7 @@ export const LeftMenu = () => {
       <li className='nav-item'>
         <a
           className={'nav-link' + (isComponentShow ? '' : ' collapsed')}
-          href='/#'
+
           data-toggle='collapse'
           data-target='#collapseTwo'
           aria-expanded={isComponentShow ? 'true' : 'false'}
@@ -73,7 +73,7 @@ export const LeftMenu = () => {
       <li className='nav-item'>
         <a
           className='nav-link collapsed'
-          href='/#'
+
           data-toggle='collapse'
           data-target='#collapseUtilities'
           aria-expanded='true'
@@ -113,7 +113,7 @@ export const LeftMenu = () => {
       <li className='nav-item'>
         <a
           className='nav-link collapsed'
-          href='/#'
+
           data-toggle='collapse'
           data-target='#collapsePages'
           aria-expanded='true'

@@ -1,9 +1,8 @@
 import { Dispatch } from "react"
 import { userService } from "../../services";
-import { history } from '../../helpers';
 import { AccountActionTypes, LOAD_CURRENT_LOGIN_USER_FAILURE, LOAD_CURRENT_LOGIN_USER_REQUEST, LOAD_CURRENT_LOGIN_USER_SUCCESS, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT } from "./types"
 
-export const login = (email: string, password: string, from: string) => {
+export const login = (email: string, password: string) => {
   return async (dispatch: Dispatch<AccountActionTypes>) => {
     dispatch({
       type: LOGIN_REQUEST,
@@ -24,7 +23,6 @@ export const login = (email: string, password: string, from: string) => {
         type: LOGIN_SUCCESS,
         payload: response,
       });
-      history.push(from);
     } catch (error: any) {
       dispatch({
         type: LOGIN_FAIL,

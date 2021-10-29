@@ -63,11 +63,34 @@ interface LoadCurrentLoginUserFailure {
   };
 }
 
+export const REFRESH_TOKEN_REQUEST = 'REFRESH_TOKEN_REQUEST';
+export const REFRESH_TOKEN_SUCCESS = 'REFRESH_TOKEN_SUCCESS';
+export const REFRESH_TOKEN_FAILURE = 'REFRESH_TOKEN_FAILURE';
+
+interface RefreshTokenRequest {
+  type: typeof REFRESH_TOKEN_REQUEST;
+}
+
+interface RefreshTokenSuccess {
+  type: typeof REFRESH_TOKEN_SUCCESS;
+  payload: {
+    token: string;
+    refreshToken: string;
+  };
+}
+
+interface RefreshTokenFailure {
+  type: typeof REFRESH_TOKEN_FAILURE;
+  payload: {
+    error: string;
+  };
+}
 export interface AccountState {
   user: AuthenticatedUser | null;
   loading: boolean;
   error: string | null;
   token: string | null;
+  refreshToken: string | null;
 }
 
 export type AccountActionTypes =
@@ -77,4 +100,7 @@ export type AccountActionTypes =
   | Logout
   | LoadCurrentLoginUserRequest
   | LoadCurrentLoginUserSuccess
-  | LoadCurrentLoginUserFailure;
+  | LoadCurrentLoginUserFailure
+  | RefreshTokenRequest
+  | RefreshTokenSuccess
+  | RefreshTokenFailure;

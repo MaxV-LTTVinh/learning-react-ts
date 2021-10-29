@@ -29,7 +29,7 @@ export const Pagination = (props: PaginationProps) => {
   const pages = range(startPageIndex, endPageIndex);
 
   const handleClick = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+    setCurrentPage(pageNumber < 1 ? 1 : pageNumber);
     props.onPageChanged(pageNumber);
   };
   return (
